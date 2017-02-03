@@ -7,7 +7,6 @@ var LinkedList = function() {
     var node = Node(value);
     if(list.head === null){
       list.head = list.tail = node;
-      // list.tail = node;
     } else {
       list.tail.next = node;
       list.tail = node;
@@ -29,30 +28,13 @@ var LinkedList = function() {
   };
 
   list.contains = function(target) {
-    // // var currentNode = list.head;
-    // // if(currentNode.value === target){
-    // //   return true;
-    // // } else if(currentNode.value !== target){
-    // //   currentNode = currentNode.next;
-    // // } else {
-    // //   return false;
-    // // }
-    // var currentNode = list.head;
-    // if (currentNode.value !== target) {
-    //   currentNode = currentNode.next;
-    // }
-    // if (currentNode && currentNode.value === target) {
-    //   return true;
-    // } else {
-    //   return false;
-    // }
 
     var currentNode = list.head;
     while(currentNode !== null && currentNode.value !== target){
       currentNode = currentNode.next;
     }
     if(currentNode !== null && currentNode.value === target){
-      return true
+      return true;
     } else {
       return false;
     }
