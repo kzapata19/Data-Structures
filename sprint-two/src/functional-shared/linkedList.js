@@ -2,7 +2,7 @@ var LinkedList = function(){
   var list = {};
   list.head = null;
   list.tail = null;
-  _.extend = (list, listMethods);
+  _.extend(list, listMethods);
   /*
   list.addToTail = listMethods.addToTail;
   list.removeHead = listMethods.removeHead;
