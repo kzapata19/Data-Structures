@@ -10,42 +10,42 @@ var BinarySearchTree = function(){
 
 var treeMethods = {
   insert: function(value){
-    if(value <= tree[value]){
-      if(!tree[left]){
-        tree[left] = BinarySearchTree(value);
+    if(value <= this[value]){
+      if(!this[left]){
+        this[left] = BinarySearchTree(value);
       } else {
-        tree[left].insert(value);
+        this[left].insert(value);
       }
     } else {
-      if(!tree[right]){
-        tree[right] = BinarySearchTree(value);
+      if(!this[right]){
+        this[right] = BinarySearchTree(value);
       } else {
-        tree[right].insert(value);
+        this[right].insert(value);
       }
     }
   },
 
   contains: function(value){
-    if(value === tree[value]){
+    if(value === this[value]){
       return true;
-    } else if(value < tree[value]){
-      if(!tree[left]){
+    } else if(value < this[value]){
+      if(!this[left]){
         return false;
       } else {
-        return tree[left].contains(value);
+        return this[left].contains(value);
       }
-    } else if(value > tree[value]) {
-      if(!tree[right]){
+    } else if(value > this[value]) {
+      if(!this[right]){
         return false;
       } else {
-        return tree[right].contains(value);
+        return this[right].contains(value);
       }
     }
   },
 
   depthFirstLog: function(callback){
-    callback(tree[value]);
-    if(tree[left]) tree[left].depthFirstLog(callback);
-    if(tree[right]) tree[right].depthFirstLog(callback);
+    callback(this[value]);
+    if(this[left]) this[left].depthFirstLog(callback);
+    if(this[right]) this[right].depthFirstLog(callback);
   }
 };
