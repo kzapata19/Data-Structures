@@ -1,19 +1,25 @@
 var Set = function(){
-  this.storage = {};
+  this._storage = {};
 };
 
 Set.prototype.contains = function(item){
-  return item in this.storage[item];
+  //use hasOwnProperty method over "in" operator to only check if target obj has the property without consulting the prototype chain
+  return this._storage.hasOwnProperty(item);
 };
 
 Set.prototype.add = function(item){
   if(!this.contains(item)){
-    this.storage[item] = item;
+    this._storage[item] = item;
+    return true; //successfully added
   }
+  return false; //failed to add
 };
 
 Set.prototype.remove = function(item){
   if(this.contains(item)){
-    delete this.storage[item];
+    var deletedValue = this._storage[item]
+    delete this._storage[item];
+    return deletedValue;
   }
+  return false; //failed to delete
 };
