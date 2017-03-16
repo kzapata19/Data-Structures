@@ -11,7 +11,8 @@ var linkPrototype = {};
 linkPrototype.addToTail = function(value){
   var node = Node(value);
   if(!this.head){
-    this.head = this.tail = value;
+    this.head = node;
+    this.tail = node;
   } else {
     this.tail.next = node;
     this.tail = node;

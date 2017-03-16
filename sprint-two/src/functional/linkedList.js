@@ -5,8 +5,9 @@ var LinkedList = function() {
 
   list.addToTail = function(value) {
     var node = Node(value);
-    if(list.head === null){
-      list.head = list.tail = node;
+    if(!list.head){
+      list.head = node;
+      list.tail = node;
     } else {
       list.tail.next = node;
       list.tail = node;
@@ -15,10 +16,10 @@ var LinkedList = function() {
 
   list.removeHead = function() {
     var toDelete
-    if(list.head.next === null){
+    if(!list.head.next){
       toDelete = list.head;
-      delete list.head;
-      delete list.tail;
+      list.head = null;
+      list.tail = null;
       return toDelete.value;
     } else {
       toDelete = list.head;
