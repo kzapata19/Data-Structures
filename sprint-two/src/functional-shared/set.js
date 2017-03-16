@@ -27,5 +27,26 @@ var setMethods = {
       return deletedValue;
     }
     return false; //failed to delete
+  },
+
+  clearValues: function(){
+    this._storage = {};
+    return true;
+  },
+
+  values: function(){
+    //method below will only return object's properties excluding those on the object prototype or inherited ones
+    return Object.keys(this._storage);
+  },
+
+  size: function(){
+    //for in loop & hasOwnProperty OR use Object.keys.length
+    var key, size = 0;
+    for(key in this._storage){
+      if(this._storage.hasOwnProperty(key)){
+        size++;
+      }
+    }
+    return size;
   }
 };

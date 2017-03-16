@@ -22,6 +22,27 @@ var Set = function(){
       return deletedValue;
     }
     return false; //failed to delete
+  },
+
+  set.clearValues = function(){
+    _storage = {};
+    return true;
+  },
+
+  set.values = function(){
+    //method below will only return object's properties excluding those on the object prototype or inherited ones
+    return Object.keys(_storage);
+  },
+
+  set.size = function(){
+    //for in loop & hasOwnProperty OR use Object.keys.length
+    var key, size = 0;
+    for(key in _storage){
+      if(_storage.hasOwnProperty(key)){
+        size++;
+      }
+    }
+    return size;
   }
 
   return set;
