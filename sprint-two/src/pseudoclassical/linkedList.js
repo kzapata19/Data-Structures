@@ -1,6 +1,7 @@
 var LinkedList = function(){
   this.head = null;
   this.tail = null;
+  this.length = 0;
 };
 
 var Node = function(value){
@@ -10,6 +11,7 @@ var Node = function(value){
 
 LinkedList.prototype.addToTail = function(value){
   var node = new Node(value);
+  this.length++;
   if(!this.head){
     this.head = node;
     this.tail = node;
@@ -25,11 +27,44 @@ LinkedList.prototype.removeHead = function(){
     toDelete = this.head;
     this.head = null;
     this.tail = null;
+    this.length--;
     return toDelete.value;
   } else {
     toDelete = this.head;
     this.head = toDelete.next;
+    this.length--;
     return toDelete.value;
+  }
+};
+
+LinkedList.prototype.removeTail = function(){
+  var toDelete;
+  if(this.isEmpty()){
+    return null; //empty linked list
+  } else if(!this.head.next){ //if length = 1
+    toDelete = this.head;
+    this.head = null;
+    this.tail = null;
+    this.length--;
+    return toDelete.value;
+  } else if(this.length === 2){
+    toDelete = this.tail;
+    this.tail = this.head;
+    this.length--;
+    console.log("toDelete value:" + toDelete.value)
+    return toDelete.value;
+  } else {
+    var index = 0,
+    current = this.head,
+    previous;
+    while(index++ < this.length && current.next !== null){
+      previous = current;
+      current = previous.next;
+    }
+    this.tail = previous;
+    previous.next = null;
+    this.length--;
+    return current.value;
   }
 };
 
@@ -47,4 +82,62 @@ LinkedList.prototype.contains = function(target){
     }
     return false;
   }
+};
+
+LinkedList.prototype.isEmpty = function(){
+  return this.length === 0;
+};
+
+//remove node by target value
+LinkedList.prototype.remove = function(value){
+
+};
+
+//remove node by target position, where position >= 0
+LinkedList.prototype.removeAt = function(position){ //FIX
+  var current = this.head,
+      index = 0,
+      previous;
+
+  if(!this.isEmpty()){
+    if(position === index){
+      this.removeHead()
+    }
+    if(position === this.length - 1){
+      this.removeTail();
+    }
+    if(position > 0 && position < this.length - 2){
+      while(index++ < position){
+        previous = current;
+        current = current["next"];
+      }
+      previous["next"] = current["next"];
+      this.length--;
+      return current["value"];
+    }
+    return null; //position >= this.length;
+  }
+  return null; //failed to remove; empty linked list
+};
+
+LinkedList.prototype.size = function(){
+  return this.length;
+};
+
+LinkedList.prototype.toString = function(){
+
+};
+
+LinkedList.prototype.retrieveHead = function(){
+  if(!this.isEmpty()){
+    return this.head;
+  }
+  return false; //empty linked list
+};
+
+LinkedList.prototype.retrieveTail = function(){
+  if(!this.isEmpty()){
+    return this.tail;
+  }
+  return false; //empty linked list
 };
