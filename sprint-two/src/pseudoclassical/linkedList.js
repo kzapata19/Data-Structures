@@ -135,23 +135,27 @@ LinkedList.prototype.removeAt = function(position){
 LinkedList.prototype.indexOf = function(value){
   var index = 0,
       currentNode = this.head;
+
   if(!this.isEmpty()){
     if(value === this.head.value){
       return index;
     }
+
     if(value ===  this.tail.value){
       return this.size() - 1;
     }
-    while(index <= this.length - 2){
+
+    while(currentNode){
       if(value === currentNode.value){
-        index++;
         return index;
       }
       currentNode = currentNode.next;
-      // index++;
+      index++;
     }
-    return -1; //target not found
+
+    return -1; //value not found in list
   }
+
   return -1 //list is empty
 };
 
@@ -209,4 +213,4 @@ myLL.addToTail("one")
 myLL.addToTail("two")
 myLL.addToTail("three")
 console.log(myLL);
-console.log("index: ", myLL.indexOf("two"))
+console.log("index: ", myLL.indexOf("five"))
