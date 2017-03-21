@@ -37,6 +37,7 @@ Set.prototype.values = function(){
 Set.prototype.size = function(){
   //for in loop & hasOwnProperty OR use Object.keys.length
   var key, size = 0;
+  //for in loop iterates over inherited properties, use hasOwnProperty to filter those out
   for(key in this._storage){
     if(this._storage.hasOwnProperty(key)){
       size++

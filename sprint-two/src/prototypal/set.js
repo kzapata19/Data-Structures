@@ -41,14 +41,52 @@ setPrototype.values = function(){
 setPrototype.size = function(){
   //for in loop & hasOwnProperty OR use Object.keys.length
   var key, size = 0;
+  //for in loop iterates over inherited properties, use hasOwnProperty to filter those out
   for(key in this._storage){
-    if(this._storage.hasOwnProperty(key)){
+    if(this.contains(key)){
       size++;
     }
   }
   return size;
 };
 
+setPrototype.union = function(otherSet){
+  var unionSet = Set(), key;
+
+  for(key in this._storage){
+    if(this.contains(key)){
+      unionSet.add(key);
+    }
+  }
+
+  for(key in otherSet){
+    if(otherSet.contains(key)){
+      unionSet.add(key);
+    }
+  }
+
+  return unionSet; //returns storage object with correct union but does not return other methods added to prototype when logging entire union set object...
+};
+
+setPrototype.intersection = function(otherSet){
+
+};
+
+setPrototype.difference = function(otherSet){
+
+};
+
 /*
  * Complexity: What is the time complexity of the above functions?
  */
+
+ var set1 = Set();
+set1.add("one")
+set1.add("two")
+console.log(set1)
+var set2 = Set()
+set2.add("three")
+set2.add("four")
+console.log(set2);
+var myunion = set1.union(set2)
+console.log(myunion);
