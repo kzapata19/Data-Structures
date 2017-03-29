@@ -9,6 +9,19 @@ var Node = function(value){
   this.next = null;
 };
 
+LinkedList.prototype.addToHead = function(value){
+  var node = new Node(value);
+  this.length++;
+  if(this.isEmpty()){
+    this.head = node;
+    this.tail = node;
+  } else {
+    var formerHead = this.head;
+    this.head = node;
+    this.head.next = formerHead;
+  }
+};
+
 LinkedList.prototype.addToTail = function(value){
   var node = new Node(value);
   this.length++;
@@ -21,8 +34,11 @@ LinkedList.prototype.addToTail = function(value){
   }
 };
 
-LinkedList.prototype.insert = function(position, value){
+LinkedList.prototype.insert = function(position, value){//FIX
   var index;
+  if(position === 0){
+    add
+  }
 };
 
 LinkedList.prototype.removeHead = function(){
@@ -213,4 +229,5 @@ myLL.addToTail("one")
 myLL.addToTail("two")
 myLL.addToTail("three")
 console.log(myLL);
-console.log("index: ", myLL.indexOf("five"))
+console.log(myLL.addToHead("karen"))
+console.log(myLL)
