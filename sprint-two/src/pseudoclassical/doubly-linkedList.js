@@ -28,7 +28,17 @@ DoublyLinkedList.prototype.addToHead = function(value){
 };
 
 DoublyLinkedList.prototype.addToTail = function(value){
-
+  var node = new Node(value);
+  if(this.isEmpty()){
+    this.head = node;
+    this.tail = node;
+  } else {
+    var formerTail = this.tail;
+    formerTail.next = node;
+    node.previous = formerTail;
+    this.tail = node;
+  }
+  this.length++;
 };
 
 DoublyLinkedList.prototype.insert = function(position, value){
