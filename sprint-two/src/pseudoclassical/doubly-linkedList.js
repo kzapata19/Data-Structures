@@ -48,14 +48,14 @@ DoublyLinkedList.prototype.insert = function(position, value){
 DoublyLinkedList.prototype.removeHead = function(){
   if(!this.isEmpty()){
     var toDelete = this.head;
-    this.length--;
-    if(!this.head.next){
+    if(this.size() === 1){
       this.head = null;
       this.tail = null;
     } else {
       this.head = toDelete.next;
-      toDelete.previous = null;
+      this.head.previous = null;
     }
+    this.length--;
     return toDelete.value;
   }
   return null;
@@ -78,7 +78,29 @@ DoublyLinkedList.prototype.removeTail = function(){
 };
 
 DoublyLinkedList.prototype.remove = function(value){
-
+  if(!this.isEmpty()){
+    var toDelete;
+    if(value === this.head.value){
+      // toDelete = this.head;
+      return this.removeHead();
+    } else if(value === this.tail.value){
+      this.removeTail();
+    } else {
+      var currentNode = this.head,
+      previous;
+      while(currentNode){
+        if(value === currentNode.value){
+          previous.next = currentNode.next
+          currentNode.next.previous = previous.next;
+        }
+        previous = currentNode;
+        currentNode = previous.next;
+      }
+      this.length--;
+    }
+    return "this is the deleted val: " + toDelete.value;
+  }
+  return null;
 };
 
 DoublyLinkedList.prototype.removeAt = function(position){
@@ -132,12 +154,12 @@ DoublyLinkedList.prototype.toString = function(){
 };
 
 var myDD = new DoublyLinkedList();
-myDD.addToTail("one");
+// myDD.addToTail("one");
 // console.log("after one:", myDD);
-myDD.addToTail("two")
-// console.log("after two: ", myDD)
+// myDD.addToTail("two")
+// // console.log("after two: ", myDD)
 // myDD.addToTail("three")
 // myDD.addToTail("four")
-console.log("after two: ", myDD)
-console.log(myDD.removeTail());
+console.log("after none: ", myDD)
+console.log(myDD.removeHead());
 console.log(myDD)
