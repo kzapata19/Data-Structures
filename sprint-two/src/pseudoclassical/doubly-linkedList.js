@@ -79,26 +79,25 @@ DoublyLinkedList.prototype.removeTail = function(){
 
 DoublyLinkedList.prototype.remove = function(value){
   if(!this.isEmpty()){
-    var toDelete;
     if(value === this.head.value){
       // toDelete = this.head;
       return this.removeHead();
     } else if(value === this.tail.value){
-      this.removeTail();
+      return this.removeTail();
     } else {
       var currentNode = this.head,
       previous;
+      this.length--;
       while(currentNode){
         if(value === currentNode.value){
           previous.next = currentNode.next
           currentNode.next.previous = previous.next;
+          return "this is the deleted val: " + currentNode.value;
         }
         previous = currentNode;
         currentNode = previous.next;
       }
-      this.length--;
     }
-    return "this is the deleted val: " + toDelete.value;
   }
   return null;
 };
@@ -154,12 +153,12 @@ DoublyLinkedList.prototype.toString = function(){
 };
 
 var myDD = new DoublyLinkedList();
-// myDD.addToTail("one");
+myDD.addToTail("one");
 // console.log("after one:", myDD);
-// myDD.addToTail("two")
+myDD.addToTail("two")
 // // console.log("after two: ", myDD)
-// myDD.addToTail("three")
+myDD.addToTail("three")
 // myDD.addToTail("four")
-console.log("after none: ", myDD)
-console.log(myDD.removeHead());
+console.log("after two: ", myDD)
+console.log(myDD.remove("two"));
 console.log(myDD)
