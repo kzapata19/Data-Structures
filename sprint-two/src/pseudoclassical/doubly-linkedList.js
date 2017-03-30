@@ -109,11 +109,14 @@ DoublyLinkedList.prototype.retrieveHead = function(){
   if(!this.isEmpty()){
     return this.head;
   }
-  return false;
+  return null;
 };
 
 DoublyLinkedList.prototype.retrieveTail = function(){
-
+  if(!this.isEmpty()){
+    return this.tail;
+  }
+  return null;
 };
 
 DoublyLinkedList.prototype.isEmpty = function(){
