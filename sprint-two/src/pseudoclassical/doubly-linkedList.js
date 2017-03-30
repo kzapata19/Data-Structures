@@ -59,7 +59,7 @@ DoublyLinkedList.prototype.isEmpty = function(){
 };
 
 DoublyLinkedList.prototype.size = function(){
-
+  return this.length;
 };
 
 DoublyLinkedList.prototype.toString = function(){
