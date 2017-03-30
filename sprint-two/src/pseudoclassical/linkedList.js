@@ -34,10 +34,28 @@ LinkedList.prototype.addToTail = function(value){
   }
 };
 
-LinkedList.prototype.insert = function(position, value){//FIX
-  var index;
-  if(position === 0){
-    add
+LinkedList.prototype.insert = function(position, value){
+  if(position > this.length || this.isEmpty()){
+    return null;
+  } else {
+    var node = new Node(value),
+    previousNode,
+    currentNode = this.head,
+    index = -1;
+    while(currentNode){
+      index++;
+      if(position === index){
+        if(position === 0){
+          this.addToHead(value);
+        } else {
+          previousNode.next = node;
+          node.next = currentNode;
+          this.length++;
+        }
+      }
+      previousNode = currentNode;
+      currentNode = currentNode.next;
+    }
   }
 };
 
@@ -222,12 +240,3 @@ LinkedList.prototype.toString = function(){
   }
   return string;
 };
-
-var myLL = new LinkedList();
-myLL.addToTail("zero")
-myLL.addToTail("one")
-myLL.addToTail("two")
-myLL.addToTail("three")
-console.log(myLL);
-console.log(myLL.addToHead("karen"))
-console.log(myLL)
