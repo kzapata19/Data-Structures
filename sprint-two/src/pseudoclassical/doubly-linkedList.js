@@ -55,7 +55,7 @@ DoublyLinkedList.prototype.retrieveTail = function(){
 };
 
 DoublyLinkedList.prototype.isEmpty = function(){
-
+  return this.length === 0;
 };
 
 DoublyLinkedList.prototype.size = function(){
