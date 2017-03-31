@@ -104,6 +104,32 @@ DoublyLinkedList.prototype.remove = function(value){
 
 DoublyLinkedList.prototype.removeAt = function(position){
 
+  if(!this.isEmpty()){
+    if(position < 0 || position >= this.size()){
+      return null;
+    } else if(position === 0){
+      return this.removeHead();
+    } else if(position === this.size() - 1){
+      return this.removeTail();
+    } else {
+      var currentNode = this.head.next,
+      previous = this.head,
+      index = 1,
+      toDelete;
+      while(currentNode){
+        if(position === index){
+          toDelete = currentNode;
+          previous.next = currentNode.next;
+          currentNode.next.previous = previous;
+          this.length--;
+          return toDelete.value;
+        }
+        previous = currentNode;
+        currentNode = previous.next;
+      }
+    }
+  }
+  return null;
 };
 
 DoublyLinkedList.prototype.indexOf = function(value){
@@ -153,12 +179,12 @@ DoublyLinkedList.prototype.toString = function(){
 };
 
 var myDD = new DoublyLinkedList();
-myDD.addToTail("one");
-// console.log("after one:", myDD);
-myDD.addToTail("two")
-// // console.log("after two: ", myDD)
-myDD.addToTail("three")
+// myDD.addToTail("one");
+// // console.log("after one:", myDD);
+// myDD.addToTail("two")
+// // // console.log("after two: ", myDD)
+// myDD.addToTail("three")
 // myDD.addToTail("four")
-console.log("after two: ", myDD)
-console.log(myDD.remove("two"));
+console.log("after three: ", myDD)
+console.log(myDD.removeAt(3));
 console.log(myDD)
