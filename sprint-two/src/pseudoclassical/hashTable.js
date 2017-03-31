@@ -56,13 +56,25 @@ HashTable.prototype.remove = function(k) {
   return undefined;
 };
 
+HashTable.prototype.contains = function(key){
+
+};
+
+HashTable.prototype.clear = function(){
+
+};
+
+HashTable.prototype.size = function(){
+
+};
+
+HashTable.prototype.keys = function(){
+
+};
+
+HashTable.prototype.values = function(){
+
+};
 /*
  * Complexity: What is the time complexity of the above functions?
  */
-
-var myHashTable = new HashTable()
-myHashTable.insert("name", "karen")
-myHashTable.insert("lastName", "zapata")
-// console.log(myHashTable)
-// console.log(myHashTable.retrieve("name"))
-console.log(myHashTable.retrieve("name"))
