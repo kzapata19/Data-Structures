@@ -211,12 +211,24 @@ DoublyLinkedList.prototype.size = function(){
   return this.length;
 };
 
+//order: from head to tail
 DoublyLinkedList.prototype.toString = function(){
   var currentNode = this.head,
   string = '';
   while(currentNode){
     string += currentNode.value + (currentNode.next ? ', ' : '');
     currentNode = currentNode.next;
+  }
+  return string;
+};
+
+//order: from tail to head
+DoublyLinkedList.prototype.inverseToString = function(){
+  var currentNode = this.tail,
+  string = '';
+  while(currentNode){
+    string += currentNode.value + (currentNode.previous ? ', ' : '');
+    currentNode = currentNode.previous;
   }
   return string;
 };
