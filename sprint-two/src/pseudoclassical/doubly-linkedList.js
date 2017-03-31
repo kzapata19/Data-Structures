@@ -212,14 +212,11 @@ DoublyLinkedList.prototype.size = function(){
 };
 
 DoublyLinkedList.prototype.toString = function(){
-
+  var currentNode = this.head,
+  string = '';
+  while(currentNode){
+    string += currentNode.value + (currentNode.next ? ', ' : '');
+    currentNode = currentNode.next;
+  }
+  return string;
 };
-
-var myDD = new DoublyLinkedList();
-myDD.addToTail("one");
-myDD.addToTail("two")
-myDD.addToTail("three")
-myDD.addToTail("four")
-console.log("after one: ", myDD)
-console.log(myDD.insert(3, "zero"));
-console.log(myDD)
