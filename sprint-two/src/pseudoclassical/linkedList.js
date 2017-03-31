@@ -233,7 +233,7 @@ LinkedList.prototype.size = function(){
 
 LinkedList.prototype.toString = function(){
   var currentNode = this.head,
-      string;
+      string = '';
   while(currentNode){
     string += currentNode.value + (currentNode.next ? ', ':'');
     currentNode = currentNode.next;
