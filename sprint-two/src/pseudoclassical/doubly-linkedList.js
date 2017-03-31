@@ -42,7 +42,32 @@ DoublyLinkedList.prototype.addToTail = function(value){
 };
 
 DoublyLinkedList.prototype.insert = function(position, value){
-
+  var node = new Node(value),
+  index = -1,
+  currentNode = this.head,
+  previous;
+  if(!this.isEmpty()){
+    if(position === 0){
+      return this.addToHead(value);
+    } else {
+      if(position > 0 && position <= this.size() - 1){
+        while(currentNode){
+          index++;
+          if(position === index){
+            previous.next = node;
+            node.previous = previous;
+            node.next = currentNode;
+            currentNode.previous = node;
+            this.length++;
+            return;
+          }
+          previous = currentNode;
+          currentNode = currentNode.next;
+        }
+      }
+    }
+  }
+  return null; //list is empty or position is out of bound
 };
 
 DoublyLinkedList.prototype.removeHead = function(){
@@ -192,9 +217,9 @@ DoublyLinkedList.prototype.toString = function(){
 
 var myDD = new DoublyLinkedList();
 myDD.addToTail("one");
-// myDD.addToTail("two")
-// myDD.addToTail("three")
-// myDD.addToTail("four")
+myDD.addToTail("two")
+myDD.addToTail("three")
+myDD.addToTail("four")
 console.log("after one: ", myDD)
-console.log(myDD.indexOf("one"));
-// console.log(myDD)
+console.log(myDD.insert(3, "zero"));
+console.log(myDD)
