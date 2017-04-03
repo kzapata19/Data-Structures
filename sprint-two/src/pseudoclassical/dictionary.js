@@ -14,12 +14,12 @@ Dictionary.prototype.get = function(key){
   return this.items[key];
 };
 
-// keeps keys created and sets their values to undefined
-Dictionary.prototype.deleteValues = function(key){
+// keeps key created and sets values to undefined
+Dictionary.prototype.removeValue = function(key){
   if(this.has(key)){
-    var toDelete = this.get(key);
+    var toRemove = this.get(key);
     this.items[key] = undefined;
-    return toDelete;
+    return toRemove;
   }
   return undefined;
 };
