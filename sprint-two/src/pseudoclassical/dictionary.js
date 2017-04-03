@@ -72,3 +72,11 @@ Dictionary.prototype.clearAll = function(){
   this.items = {};
 };
 
+//using Object.keys method
+Dictionary.prototype.size = function(){
+  return Object.keys(this.items).length;
+};
+
+Dictionary.prototype.size = function(){
+  return this.keys().length;
+};
