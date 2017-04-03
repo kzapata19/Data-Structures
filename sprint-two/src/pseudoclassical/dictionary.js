@@ -63,3 +63,7 @@ Dictionary.prototype.values = function(){
   });
   return allValues;
 };
+
+Dictionary.prototype.allItems = function(){
+  return this.items;
+};
