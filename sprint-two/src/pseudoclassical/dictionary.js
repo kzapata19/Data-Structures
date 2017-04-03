@@ -45,9 +45,7 @@ Dictionary.prototype.each = function(callback){
 Dictionary.prototype.keys = function(){
   var allKeys = [];
   this.each(function(value, key){
-    if(this.has(key)) {
-      allKeys.push(key)
-    }
+      allKeys.push(key);
   });
   return allKeys;
 };
