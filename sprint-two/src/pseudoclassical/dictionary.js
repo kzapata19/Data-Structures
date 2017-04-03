@@ -41,10 +41,10 @@ Dictionary.prototype.each = function(callback){
   }
 };
 
-//Object.keys using each
+//Implemented Object.keys using each
 Dictionary.prototype.keys = function(){
   var allKeys = [];
-  this.each(function(values, key){
+  this.each(function(value, key){
     allKeys.push(key);
   });
   return allKeys;
