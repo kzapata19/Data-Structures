@@ -11,7 +11,7 @@ Dictionary.prototype.set = function(key, value){
 };
 
 Dictionary.prototype.get = function(key){
-  return this.items[key];
+  return this.has(key) ? this.get(key) : undefined;
 };
 
 // keeps key created and sets values to undefined
