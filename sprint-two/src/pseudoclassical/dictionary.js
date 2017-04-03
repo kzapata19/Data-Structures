@@ -56,8 +56,10 @@ Dictionary.prototype.keys = function(){
 
 Dictionary.prototype.values = function(){
   var allValues = [];
-  this.each(function(value){
-    allValues.push(value);
+  this.each(function(value, key){
+    if(this.has(key)){
+      allValues.push(value);
+    }
   });
   return allValues;
 };
