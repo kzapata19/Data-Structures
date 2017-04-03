@@ -67,3 +67,8 @@ Dictionary.prototype.values = function(){
 Dictionary.prototype.allItems = function(){
   return this.items;
 };
+
+Dictionary.prototype.clearAll = function(){
+  this.items = {};
+};
+
