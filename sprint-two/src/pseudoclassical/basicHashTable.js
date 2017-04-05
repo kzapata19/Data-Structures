@@ -51,9 +51,9 @@ HashTable.prototype.clear = function(){
 };
 
 HashTable.prototype.size = function(){
-
+  return this.storage.length;
 };
 
 HashTable.prototype.values = function(){
-
+  return this.storage;
 };
