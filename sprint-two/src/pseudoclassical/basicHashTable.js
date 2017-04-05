@@ -45,3 +45,15 @@ HashTable.prototype.contains = function(key){
   }
   return false;
 };
+
+HashTable.prototype.clear = function(){
+  this.storage = [];
+};
+
+HashTable.prototype.size = function(){
+
+};
+
+HashTable.prototype.values = function(){
+
+};
